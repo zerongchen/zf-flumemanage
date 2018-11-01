@@ -1,0 +1,19 @@
+#全局面已直
+log4j.rootLogger=error,stdout,DDD
+#MyBatis 日志配直
+log4j.logger.com.aotain.collect=TRACE
+log4j.logger.org.apache.flume.node=ERROR
+log4j.logger.kafka.producer=ERROR
+
+#控制台输出配置
+log4j.appender.stdout = org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.layout = org.apache.log4j.PatternLayout
+log4j.appender.stdout.layout.ConversionPattern ＝ %5p [%t] -%m%n
+
+### 输出DEBUG 级别以上的日志到=${ZF_HOME}/flume_collect_debug.log ###
+log4j.appender.DDD=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.DDD.File=${ZF_HOME}/logs/flume_collect_debug.log
+log4j.appender.DDD.Append=true
+log4j.appender.DDD.Threshold=DEBUG
+log4j.appender.DDD.layout=org.apache.log4j.PatternLayout
+log4j.appender.DDD.layout.ConversionPattern=%-d{yyyy-MM-dd HH:mm:ss} [ %t:%r ] - [ %p ] %m%n
